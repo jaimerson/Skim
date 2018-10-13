@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 	Animator animator;
-	string direction;
+	enum Directions { Up, Down, Left, Right };
+	int direction;
 
 	void Start () {
 		animator = GetComponent<Animator>();
@@ -20,11 +21,11 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if(Math.Abs(x) > Math.Abs(y)){
-			direction = x > 0 ? "Right" : "Left";
+			direction = x > 0 ? (int)Directions.Right : (int)Directions.Left;
 		}else{
-			direction = y > 0 ? "Up" : "Down";
+			direction = y > 0 ? (int)Directions.Up : (int)Directions.Down;
 		}
-		animator.SetTrigger("Look" + direction);
+		animator.SetInteger("Direction", direction);
 
 		transform.Translate(x, y, 0);
 	}

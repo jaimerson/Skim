@@ -23,8 +23,15 @@ public class TreasureChestController : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionExit2D(Collision2D collider){
+		if(open){
+			return;
+		}else if(collider.gameObject.tag == "Player"){
+			nearPlayer = false;
+		}
+	}
+
 	void OnCollisionEnter2D(Collision2D collider){
-		Debug.Log("collided");
 		if(open){
 			return;
 		}else if(collider.gameObject.tag == "Player"){

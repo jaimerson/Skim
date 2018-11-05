@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,8 +8,8 @@ public class TreasureChestController : MonoBehaviour {
 	bool open;
 	bool nearPlayer;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		animator = GetComponent<Animator>();
 		open = false;
 		nearPlayer = false;
@@ -18,12 +19,18 @@ public class TreasureChestController : MonoBehaviour {
 	void Update () {
 		if(nearPlayer){
 			if(Input.GetKey("e")){
-				animator.SetTrigger("open");
+				openAndShowItem();
 			}
 		}
 	}
 
-	void OnCollisionExit2D(Collision2D collider){
+    private void openAndShowItem()
+    {
+        animator.SetTrigger("open");
+		ModalDialog.Create("You found *potion*!");
+    }
+
+    void OnCollisionExit2D(Collision2D collider){
 		if(open){
 			return;
 		}else if(collider.gameObject.tag == "Player"){

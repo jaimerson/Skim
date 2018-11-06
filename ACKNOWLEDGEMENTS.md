@@ -7,6 +7,7 @@
 - [William.Thompsonj](https://opengameart.org/users/williamthompsonj)
 - [HughSpectrum](https://opengameart.org/users/hughspectrum)
 - [Sharm](https://opengameart.org/users/sharm)
+- [MrBeast](https://opengameart.org/content/cave-tileset-0)
 
 # Sounds
 ## Freesound

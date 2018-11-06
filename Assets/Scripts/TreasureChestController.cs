@@ -17,7 +17,7 @@ public class TreasureChestController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(nearPlayer){
+		if(!open && nearPlayer){
 			if(Input.GetKey("e")){
 				openAndShowItem();
 			}
@@ -26,8 +26,10 @@ public class TreasureChestController : MonoBehaviour {
 
     private void openAndShowItem()
     {
+		open = true;
         animator.SetTrigger("open");
-		ModalDialog.Create("You found *potion*!");
+		var message = ModalDialog.Create("You found *potion*!");
+		message.SetActive(true);
     }
 
     void OnCollisionExit2D(Collision2D collider){

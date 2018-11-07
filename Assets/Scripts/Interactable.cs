@@ -7,16 +7,24 @@ using UnityEngine;
 // action when near the player and "e" is pressed.
 public class Interactable : MonoBehaviour {
 
+	public const string InteractKey = "e";
 	bool nearPlayer;
+	private GameObject interactPrompt;
+	protected string promptText;
 
 	public virtual void Awake(){
 		nearPlayer = false;
+		promptText = "Interact"; // default if subclass does not define its own
+		Setup();
+	}
+
+	public virtual void Setup(){
 	}
 	
 	// Update is called once per frame
 	public virtual void Update () {
 		if(canInteract() && nearPlayer){
-			if(Input.GetKey("e")){
+			if(Input.GetKey(InteractKey)){
 				executeAction();
 			}
 		}
@@ -32,51 +40,38 @@ public class Interactable : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D collider){
-		enterCollision(collider);
+		enterCollision(collider.gameObject.tag);
 	}
 	void OnTriggerExit2D(Collider2D collider){
-		exitCollision(collider);
+		exitCollision(collider.gameObject.tag);
 	}
 
     void OnCollisionExit2D(Collision2D collider){
-		exitCollision(collider);
+		exitCollision(collider.gameObject.tag);
 	}
 
 	void OnCollisionEnter2D(Collision2D collider){
-		enterCollision(collider);
+		enterCollision(collider.gameObject.tag);
 	}
 
-	void enterCollision(Collision2D collider){
+	void enterCollision(string tag){
+        setupInteractPrompt();
+        interactPrompt.SetActive(true);
+
 		if(!canInteract()){
 			return;
-		}else if(collider.gameObject.tag == "Player"){
+		}else if(tag == "Player"){
 			nearPlayer = true;
 			OnEnterInteractionPossible();
 		}
 	}
 
-	void enterCollision(Collider2D collider){
-		if(!canInteract()){
-			return;
-		}else if(collider.gameObject.tag == "Player"){
-			nearPlayer = true;
-			OnEnterInteractionPossible();
-		}
-	}
+	void exitCollision(string tag){
+        interactPrompt.SetActive(false);
 
-	void exitCollision(Collision2D collider){
 		if(!canInteract()){
 			return;
-		}else if(collider.gameObject.tag == "Player"){
-			nearPlayer = false;
-			OnExitInteractionPossible();
-		}
-	}
-
-	void exitCollision(Collider2D collider){
-		if(!canInteract()){
-			return;
-		}else if(collider.gameObject.tag == "Player"){
+		}else if(tag == "Player"){
 			nearPlayer = false;
 			OnExitInteractionPossible();
 		}
@@ -86,5 +81,10 @@ public class Interactable : MonoBehaviour {
 	}
 
 	protected virtual void OnExitInteractionPossible(){
+	}
+
+	protected void setupInteractPrompt(){
+		if(interactPrompt != null) return;
+		interactPrompt = InteractPrompt.Create(string.Format("({0}) {1}", InteractKey, promptText));
 	}
 }

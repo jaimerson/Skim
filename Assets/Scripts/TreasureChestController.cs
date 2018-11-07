@@ -7,6 +7,10 @@ public class TreasureChestController : Interactable {
 	Animator animator;
 	bool open;
 
+	public override void Setup(){
+		promptText = "Open";
+	}
+
     // Use this for initialization
     void Start () {
 		animator = GetComponent<Animator>();

@@ -1,11 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Notice : Interactable {
 
 	public TextAsset textAsset;
 	private GameObject dialog;
+
+	public override void Setup(){
+		promptText = "Read";
+	}
 
 	protected override void executeAction(){
 		dialog = ModalDialog.Create(textAsset.text);

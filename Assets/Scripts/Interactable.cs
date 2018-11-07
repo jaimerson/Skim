@@ -55,12 +55,11 @@ public class Interactable : MonoBehaviour {
 	}
 
 	void enterCollision(string tag){
-        setupInteractPrompt();
-        interactPrompt.SetActive(true);
-
 		if(!canInteract()){
 			return;
 		}else if(tag == "Player"){
+            setupInteractPrompt();
+            interactPrompt.SetActive(true);
 			nearPlayer = true;
 			OnEnterInteractionPossible();
 		}

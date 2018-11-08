@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/AncientDungeon1F.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/LabyrinthOfDoom/LabyrinthOfDoom_ThreeDoors.unity
+    guid: 49a2da8facdba46a3a8f77142154cfc2
+  - enabled: 1
+    path: Assets/Scenes/LabyrinthOfDoom/LabyrinthOfDoom_Entrance.unity
+    guid: ffee9e2808bf72744a79e6e5c60e4021
   m_configObjects: {}

@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Units
+    uniqueID: 1975608285
+    locked: 0
+  - name: WallDecorations
+    uniqueID: 578771195
+    locked: 0
+  - name: Ceiling
+    uniqueID: 2645217773
+    locked: 0

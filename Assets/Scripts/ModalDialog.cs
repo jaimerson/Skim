@@ -25,7 +25,7 @@ public class ModalDialog : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		acceptButton.onClick.RemoveAllListeners();
-		acceptButton.onClick.AddListener(Exit);
+		acceptButton.onClick.AddListener(() => Exit());
 	}
 
 	// Update is called once per frame

@@ -1,0 +1,7 @@
+To reach the end of the Labyrinth of Doom, you must follow these steps:
+
+First take the left door, then the middle door, and after that the left door again.
+Next take the right path, left, middle and right again.
+Finally proceed through the middle door, then left and left.
+
+Fail to follow this sequence and you will return to this room.

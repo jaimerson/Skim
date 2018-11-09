@@ -7,7 +7,7 @@ public class LabyrinthExit : Exit {
 
 	public int index;
 	const string entranceSceneName = "LabyrinthOfDoom_Entrance";
-	const string finalSceneName = "LabyrinthOfDoom_Entrance";
+	const string finalSceneName = "LabyrinthOfDoom_Exit";
 	public static int[] CorrectIndexes;
 
 	protected override string sceneToLoad(){

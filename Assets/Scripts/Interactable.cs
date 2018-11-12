@@ -16,6 +16,7 @@ public class Interactable : MonoBehaviour {
 		nearPlayer = false;
 		promptText = "Interact"; // default if subclass does not define its own
 		Setup();
+		StartCoroutine(setupInteractPrompt());
 	}
 
 	public virtual void Setup(){
@@ -26,6 +27,7 @@ public class Interactable : MonoBehaviour {
 		if(canInteract() && nearPlayer){
 			if(Input.GetKey(InteractKey)){
 				executeAction();
+				interactPrompt.SetActive(false);
 			}
 		}
 	}
@@ -82,8 +84,9 @@ public class Interactable : MonoBehaviour {
 	protected virtual void OnExitInteractionPossible(){
 	}
 
-	protected void setupInteractPrompt(){
-		if(interactPrompt != null) return;
+	protected IEnumerator setupInteractPrompt(){
+		if(interactPrompt != null) yield return null;
 		interactPrompt = InteractPrompt.Create(string.Format("({0}) {1}", InteractKey, promptText));
+		yield return null;
 	}
 }

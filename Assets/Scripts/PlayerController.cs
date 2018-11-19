@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour {
 	public Animator animator;
 	enum Directions { Up, Down, Left, Right };

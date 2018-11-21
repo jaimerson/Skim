@@ -3,10 +3,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 	public Animator animator;
+	public AudioClip stepSound;
+	public AudioSource leftAudioSource;
+	public AudioSource rightAudioSource;
+
+	private AudioSource audioSource;
 	enum Directions { Up, Down, Left, Right };
 	int direction;
 
 	void Start () {
+		audioSource = GetComponent<AudioSource>();
 		animator = GetComponent<Animator>();
 		direction = (int)Directions.Right;
 		animator.SetInteger("Direction", direction);
@@ -37,5 +43,13 @@ public class PlayerController : MonoBehaviour {
 		animator.SetInteger("Direction", direction);
 
 		transform.Translate(x, y, 0);
+	}
+
+	public void PlayStepLeftSound(){
+		leftAudioSource.PlayOneShot(stepSound);
+	}
+
+	public void PlayStepRightSound(){
+		rightAudioSource.PlayOneShot(stepSound);
 	}
 }

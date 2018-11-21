@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4839693493752298}
   - component: {fileID: 212012637311673110}
   - component: {fileID: 95927726998998658}
+  - component: {fileID: 114191641588205648}
   - component: {fileID: 114105575850367926}
   - component: {fileID: 50403144301381654}
   - component: {fileID: 61037202691594664}
-  - component: {fileID: 108820361159823514}
   - component: {fileID: 82736989905542538}
   - component: {fileID: 82189803551789346}
   m_Layer: 8
@@ -300,43 +300,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!108 &108820361159823514
-Light:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1662503826921156}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10
-  m_Range: 6
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
 --- !u!114 &114105575850367926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -352,6 +315,32 @@ MonoBehaviour:
   stepSound: {fileID: 8300000, guid: 0e96e1503d98a4a18a50621f62534312, type: 3}
   leftAudioSource: {fileID: 82736989905542538}
   rightAudioSource: {fileID: 82189803551789346}
+--- !u!114 &114191641588205648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662503826921156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245feda62c1d9448c88720dfa70a766b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  squad:
+  - name: Sheila
+    level: 1
+    strength: 100
+    magic: 100
+    fire_resistance: 100
+    water_resistance: 100
+    bolt_resistance: 100
+    defense: 100
+    currentHP: 100
+    currentMP: 100
+    maxHP: 100
+    maxMP: 100
+    alive: 1
+    prefabPath: Sheila
 --- !u!212 &212012637311673110
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -25,11 +25,15 @@ public class TreasureChestController : Interactable {
 		openAndShowItem();
 	}
 
-    private void openAndShowItem()
-    {
+    private void openAndShowItem() {
 		open = true;
         animator.SetTrigger("open");
-		var message = ModalDialog.Create("You found *potion*!");
-		message.SetActive(true);
+
+        Invoke("showMessage", 1f);
+    }
+
+    private void showMessage () {
+        var message = ModalDialog.Create("You found *potion*!");
+        message.SetActive(true);
     }
 }

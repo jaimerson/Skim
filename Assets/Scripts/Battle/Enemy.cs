@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-
 	public EnemyCharacter[] squad;
 	public bool alive = true;
 
-	// Use this for initialization
+    // Use this for initialization
 	void Start () {
 		
 	}

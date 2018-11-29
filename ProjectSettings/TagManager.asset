@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -49,4 +50,7 @@ TagManager:
     locked: 0
   - name: Ceiling
     uniqueID: 2645217773
+    locked: 0
+  - name: HUD
+    uniqueID: 3157575883
     locked: 0

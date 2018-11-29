@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LabyrinthOfDoom/LabyrinthOfDoom_Exit.unity
     guid: adfa216a6bd4247158431373080e3417
+  - enabled: 1
+    path: Assets/Scenes/Battle.unity
+    guid: bc1ab52138a794b66adbd041f4f619c4
   m_configObjects: {}

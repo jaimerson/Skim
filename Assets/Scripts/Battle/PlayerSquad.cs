@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerSquad : MonoBehaviour {
-
-	public List<Character> characters;
-	private Transform playerSquadPanel;
+public class PlayerSquad : Squad {
 
 	// Use this for initialization
 	void Awake () {
-		this.playerSquadPanel = transform.Find("PlayerSquadPanel");
+		this.squadPanel = transform.Find("PlayerSquadPanel");
 	}
 
 	public void AddCharacter(Character character){
+		addCharacterAndSetupActionPanel(character);
+	}
+
+	private void addCharacterAndSetupActionPanel(Character character){
 		this.characters.Add(character);
 		GameObject panel = CreateActionPanel();
-		panel.transform.SetParent(playerSquadPanel);
+		panel.transform.SetParent(squadPanel);
 		CharacterActionPanel panelScript = panel.transform.GetComponent<CharacterActionPanel>();
 		panelScript.SetCharacterName(character.name);
 		panelScript.character = character;

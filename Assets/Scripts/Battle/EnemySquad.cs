@@ -2,6 +2,5 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySquad : MonoBehaviour {
-	public List<Character> characters;
+public class EnemySquad : Squad {
 }

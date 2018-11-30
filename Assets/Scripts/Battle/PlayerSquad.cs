@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerSquad : MonoBehaviour {
-
-	public List<Character> characters;
-	private Transform playerSquadPanel;
+public class PlayerSquad : Squad {
+	protected Transform squadPanel;
 
 	// Use this for initialization
 	void Awake () {
-		this.playerSquadPanel = transform.Find("PlayerSquadPanel");
+		this.squadPanel = transform.Find("PlayerSquadPanel");
 	}
 
-	public void AddCharacter(Character character){
-		this.characters.Add(character);
+	protected override void afterAddingCharacter(BattleCharacter character){
+		setupActionPanel(character);
+	}
+
+	private void setupActionPanel(BattleCharacter bc){
 		GameObject panel = CreateActionPanel();
-		panel.transform.SetParent(playerSquadPanel);
+		panel.transform.SetParent(squadPanel);
 		CharacterActionPanel panelScript = panel.transform.GetComponent<CharacterActionPanel>();
-		panelScript.SetCharacterName(character.name);
-		panelScript.character = character;
+		panelScript.SetCharacterName(bc.character.name);
+		panelScript.character = bc;
 	}
 	
 	// Update is called once per frame

@@ -8,6 +8,7 @@
 - [HughSpectrum](https://opengameart.org/users/hughspectrum)
 - [Sharm](https://opengameart.org/users/sharm)
 - [MrBeast](https://opengameart.org/content/cave-tileset-0)
+- [Trent Gamblin](https://opengameart.org/content/12-battle-backgrounds-240x110)
 
 # Sounds
 ## Freesound

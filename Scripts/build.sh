@@ -38,6 +38,17 @@ echo "Attempting to build $project for OS X"
   -executeMethod BuildScript.OSX \
   -quit
 
+echo "Attempting to build $project for WebGL"
+/Applications/Unity/Unity.app/Contents/MacOS/Unity \
+  -batchmode \
+  -noUpm \
+  -nographics \
+  -silent-crashes \
+  -logFile \
+  -projectPath "$(pwd)/" \
+  -executeMethod BuildScript.WebGL \
+  -quit
+
 echo "Listing files in $(pwd)"
 ls $(pwd)
 echo "Listing files in $(pwd)/Build/linux"
@@ -46,6 +57,8 @@ echo "Listing files in $(pwd)/Build/osx"
 ls $(pwd)/Build/osx
 echo "Listing files in $(pwd)/Build/windows"
 ls $(pwd)/Build/windows
+echo "Listing files in $(pwd)/Build/webgl"
+ls $(pwd)/Build/webgl
 
 echo 'Attempting to zip builds'
 zip -r $(pwd)/Build/linux.zip $(pwd)/Build/linux/

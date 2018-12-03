@@ -59,6 +59,11 @@ echo "Listing files in $(pwd)/Build/windows"
 ls $(pwd)/Build/windows
 echo "Listing files in $(pwd)/Build/webgl"
 ls $(pwd)/Build/webgl
+mv $(pwd)/Scripts/templates/index.html $(pwd)/Build/webgl/
+mv $(pwd)/Scripts/templates/skim.json $(pwd)/Build/webgl/Build/
+mv $(pwd)/Build/webgl/.data.unityweb $(pwd)/Build/webgl/skim.data.unityweb
+mv $(pwd)/Build/webgl/.wasm.code.unityweb $(pwd)/Build/webgl/skim.wasm.code.unityweb
+mv $(pwd)/Build/webgl/.wasm.framework.unityweb $(pwd)/Build/webgl/skim.wasm.framework.unityweb
 
 echo 'Attempting to zip builds'
 cd $(pwd)/Build

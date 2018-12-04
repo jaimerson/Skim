@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleCharacter {
+[System.Serializable]
+public class BattleCharacter : System.Object {
 
 	public Character character;
 	public GameObject gameObject;
@@ -11,6 +12,7 @@ public class BattleCharacter {
 	public BattleCharacter(Character character){
 		this.character = character;
 		this.gameObject = gameObjectFromCharacter(character);
+		this.animator = gameObject.GetComponent<Animator>();
 	}
 
 	private GameObject gameObjectFromCharacter(Character c){

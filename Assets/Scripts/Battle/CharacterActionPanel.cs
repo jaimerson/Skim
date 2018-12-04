@@ -53,7 +53,7 @@ public class CharacterActionPanel : MonoBehaviour {
 	}
 
 	private void attack(){
-		Character victim = BattleQueue.randomEnemy();
+		Character victim = BattleQueue.randomEnemy().character;
 		BattleQueue.Enqueue(
 			new BattleAction {
 				performer = this.character,

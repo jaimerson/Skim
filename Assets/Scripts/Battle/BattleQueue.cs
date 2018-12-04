@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 
 public class BattleQueue {
+	public static Enemy enemy;
 	private static Queue<BattleAction> actions = new Queue<BattleAction>();
 	public static PlayerSquad playerSquad;
 	public static EnemySquad enemySquad;
@@ -29,22 +30,23 @@ public class BattleQueue {
 		return actions.Dequeue();
 	}
 
-	public static Character randomEnemy(){
-		List<Character> enemies = aliveEnemies();
+	public static BattleCharacter randomEnemy(){
+		List<BattleCharacter> enemies = enemySquad.aliveCharacters();
 		return enemies[rnd.Next(enemies.Count)];
 	}
 
-	public static List<Character> aliveEnemies(){
-		return enemySquad.characters.Where(x => x.alive).ToList();
+	public static List<BattleCharacter> aliveEnemies(){
+		return enemySquad.aliveCharacters();
 	}
 
-	public static List<Character> alivePlayers(){
-		return playerSquad.characters.Where(x => x.alive).ToList();
+	public static List<BattleCharacter> alivePlayers(){
+		return playerSquad.aliveCharacters();
 	}
 
 	public static void Reset(){
 		playerSquad = null;
 		enemySquad = null;
+		enemy = null;
 		finished = false;
 		actions.Clear();
 	}

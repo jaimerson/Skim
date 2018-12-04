@@ -1944,6 +1944,7 @@ MonoBehaviour:
     alive: 1
     prefabPath: Enemies/RedImpSword
     experienceDrop: 1000
+  alive: 1
 --- !u!1001 &2082123405
 Prefab:
   m_ObjectHideFlags: 0

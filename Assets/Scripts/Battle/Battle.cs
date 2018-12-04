@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Battle : MonoBehaviour {
 
+    public Enemy enemy;
 	public GameObject actionsLogGameObject;
 	public GameObject playerSquad;
 	public GameObject enemySquad;
@@ -14,10 +15,11 @@ public class Battle : MonoBehaviour {
 	private PlayerSquad heroes;
 	private EnemySquad enemies;
 
-	public static void Begin(Character[] players, Character[] enemies){
+	public static void Begin(Character[] players, Character[] enemies, Enemy enemy){
 		BattleQueue.playerCharacters = enemies;
 		BattleQueue.enemyCharacters = players;
-		SceneManager.LoadScene("Battle");
+		BattleQueue.enemy = enemy;
+		SceneManager.LoadScene("Battle", LoadSceneMode.Additive);
 	}
 
 	// Use this for initialization
@@ -25,6 +27,7 @@ public class Battle : MonoBehaviour {
 		this.actionsLog = this.actionsLogGameObject.GetComponent<ActionsLog>();
 		this.heroes = this.actionsPanel.GetComponent<PlayerSquad>();
 		this.enemies = this.actionsPanel.GetComponent<EnemySquad>();
+		this.enemy = BattleQueue.enemy;
 		foreach(Character h in BattleQueue.playerCharacters){
 			AddHero(h);
 		}
@@ -37,26 +40,20 @@ public class Battle : MonoBehaviour {
 	}
 
 	void AddHero(Character hero){
-		heroes.AddCharacter(hero);
-		GameObject heroObject = gameObjectFromCharacter(hero);
-		heroObject.transform.SetParent(playerSquad.transform, true);
+		heroes.AddCharacter(hero, playerSquad.transform);
 	}
 
 	void AddEnemy(Character enemy){
-		enemies.characters.Add(enemy);
-		GameObject enemyObject = gameObjectFromCharacter(enemy);
-		enemyObject.transform.SetParent(enemySquad.transform, true);
-	}
-
-	GameObject gameObjectFromCharacter(Character character){
-		UnityEngine.Object prefab = Resources.Load(string.Format("Prefabs/Battle/{0}",character.prefabPath));
-		return Instantiate(prefab) as GameObject;
+		enemies.AddCharacter(enemy, enemySquad.transform);
 	}
 
 	// Update is called once per frame
 	void Update () {
+		if(enemies.allDead()){
+			win();
+		}
 		if(BattleQueue.Empty()){
-			return;
+			return; // TODO: wait for player and enemy turns
 		}
 		BattleAction action = BattleQueue.Dequeue();
 		if(action != null){
@@ -65,10 +62,21 @@ public class Battle : MonoBehaviour {
 		}
 	}
 
+	private void win(){
+		LogAction("You won!");
+        enemy.alive = false;
+		endBattle();
+	}
+
+	private void endBattle(){
+		BattleQueue.Reset();
+        SceneManager.UnloadSceneAsync("Battle");
+	}
+
 	public void LogAction(string message){
 		actionsLog.setMessage(message);
 		actionsLog.display();
-		StartCoroutine(waitAndCloseActionLog(2));
+		StartCoroutine(waitAndCloseActionLog(3));
 	}
 
 	private IEnumerator waitAndCloseActionLog(int seconds){

@@ -19,7 +19,7 @@ public class Battle : MonoBehaviour {
 		BattleQueue.playerCharacters = enemies;
 		BattleQueue.enemyCharacters = players;
 		BattleQueue.enemy = enemy;
-		SceneManager.LoadScene("Battle", LoadSceneMode.Additive);
+		SceneHelper.GoToScene("Battle", LoadSceneMode.Additive);
 	}
 
 	// Use this for initialization
@@ -70,7 +70,7 @@ public class Battle : MonoBehaviour {
 
 	private void endBattle(){
 		BattleQueue.Reset();
-        SceneManager.UnloadSceneAsync("Battle");
+        SceneHelper.UnloadScene("Battle");
 	}
 
 	public void LogAction(string message){

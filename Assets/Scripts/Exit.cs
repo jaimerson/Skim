@@ -8,9 +8,7 @@ public class Exit : MonoBehaviour {
     public string sceneName;
 
 	void OnTriggerEnter2D(Collider2D collider){
-		StartCoroutine(GameObject.Find("Main Camera").GetComponent<CameraController>().fadeToBlack(
-			() => SceneManager.LoadScene(sceneToLoad())
-		));
+		SceneHelper.GoToScene(sceneToLoad());
 	}
 
 	protected virtual string sceneToLoad(){

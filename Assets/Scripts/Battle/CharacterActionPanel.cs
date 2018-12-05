@@ -8,7 +8,6 @@ public class CharacterActionPanel : MonoBehaviour {
 	public GameObject stats;
 	public Text characterName;
 
-	public bool waitingPlayerAction;
 	public BattleCharacter character;
 
 	public Button attackButton, itemButton, spellButton;
@@ -22,12 +21,12 @@ public class CharacterActionPanel : MonoBehaviour {
 		this.attackButton.onClick.AddListener(attack);
 		this.spellButton.onClick.AddListener(spell);
 		this.itemButton.onClick.AddListener(item);
-		this.actions.SetActive(!waitingPlayerAction);
-		this.stats.SetActive(waitingPlayerAction);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		this.actions.SetActive(!character.waitingForAction);
+		this.stats.SetActive(character.waitingForAction);
 	}
 
 	private void spell(){

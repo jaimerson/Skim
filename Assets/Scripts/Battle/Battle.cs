@@ -53,7 +53,15 @@ public class Battle : MonoBehaviour {
 			win();
 		}
 		if(BattleQueue.Empty()){
-			return; // TODO: wait for player and enemy turns
+			BattleQueue.waitingForPlayer = true;
+			BattleQueue.waitingForEnemies = true;
+		}
+		if(BattleQueue.waitingForPlayer){
+			return;
+		}
+		if(BattleQueue.waitingForEnemies){
+			enemies.takeTurn();
+			return;
 		}
 		BattleAction action = BattleQueue.Dequeue();
 		if(action != null){

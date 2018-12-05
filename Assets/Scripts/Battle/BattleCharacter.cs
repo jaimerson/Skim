@@ -8,6 +8,7 @@ public class BattleCharacter : System.Object {
 
 	public Character character;
 	public GameObject gameObject;
+	public bool waitingForAction;
 
 	private GameObject damageText;
 	private Animator animator;

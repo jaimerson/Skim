@@ -20,18 +20,6 @@ public class Character : System.Object {
 	public bool alive = true;
 	public string prefabPath;
 
-	public static void Attack(Character attacker, Character defender, Battle battle){
-		attacker.Attack(defender, new Attack { power = attacker.strength });
-	}
-
-	public static void Spell(Character spellcaster, Character target, Battle battle){
-		battle.LogAction("Don't know any spells :(");
-	}
-
-	public static void Item(Character spellcaster, Character target, Battle battle){
-		battle.LogAction("Don't have any items :(");
-	}
-
 	public int Attack(Character other, Attack attack){
 		return other.Defend(attack);
 	}

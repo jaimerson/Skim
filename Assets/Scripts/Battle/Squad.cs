@@ -10,10 +10,10 @@ public class Squad : MonoBehaviour {
 		BattleCharacter c = new BattleCharacter(character);
 		this.characters.Add(c);
 		c.gameObject.transform.SetParent(parent);
-		afterAddingCharacter(character);
+		afterAddingCharacter(c);
 	}
 
-	protected virtual void afterAddingCharacter(Character character){
+	protected virtual void afterAddingCharacter(BattleCharacter character){
 	}
 
 	public List<BattleCharacter> aliveCharacters(){

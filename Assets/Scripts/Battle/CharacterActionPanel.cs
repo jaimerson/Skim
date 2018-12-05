@@ -9,7 +9,7 @@ public class CharacterActionPanel : MonoBehaviour {
 	public Text characterName;
 
 	public bool waitingPlayerAction;
-	public Character character;
+	public BattleCharacter character;
 
 	public Button attackButton, itemButton, spellButton;
 
@@ -34,8 +34,8 @@ public class CharacterActionPanel : MonoBehaviour {
 		BattleQueue.Enqueue(
 			new BattleAction {
 				performer = this.character,
-				message = string.Format("{0} casts spell", this.character.name),
-				action=Character.Spell,
+				message = string.Format("{0} casts spell", this.character.character.name),
+				action=BattleCharacter.Spell,
 				target=null
 			}
 		);
@@ -45,20 +45,20 @@ public class CharacterActionPanel : MonoBehaviour {
 		BattleQueue.Enqueue(
 			new BattleAction {
 				performer = this.character,
-				message = string.Format("{0} uses item", this.character.name),
-				action=Character.Item,
+				message = string.Format("{0} uses item", this.character.character.name),
+				action=BattleCharacter.Item,
 				target=null
 			}
 		);
 	}
 
 	private void attack(){
-		Character victim = BattleQueue.randomEnemy().character;
+		BattleCharacter victim = BattleQueue.randomEnemy();
 		BattleQueue.Enqueue(
 			new BattleAction {
 				performer = this.character,
-				message = string.Format("{0} attacks {1}", this.character.name, victim.name),
-				action=Character.Attack,
+				message = string.Format("{0} attacks {1}", this.character.character.name, victim.character.name),
+				action=BattleCharacter.Attack,
 				target=victim
 			}
 		);

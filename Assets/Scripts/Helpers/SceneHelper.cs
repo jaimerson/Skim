@@ -33,13 +33,6 @@ public class SceneHelper : MonoBehaviour {
 	public void unloadScene(string sceneName){
         SceneManager.UnloadSceneAsync(sceneName);
 		StartCoroutine(fadeFromBlack());
-  //      Debug.Log("EEEEAHAHAHAH");
-		//StartCoroutine(fadeToBlack(
-		//	() => {
-		//		SceneManager.UnloadSceneAsync(sceneName);
-		//		Debug.Log("AHAHAHAH");
-		//	}
-		//));
 	}
 
 	public void LoadScene(string sceneName, LoadSceneMode mode){

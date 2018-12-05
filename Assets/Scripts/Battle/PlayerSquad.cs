@@ -11,16 +11,16 @@ public class PlayerSquad : Squad {
 		this.squadPanel = transform.Find("PlayerSquadPanel");
 	}
 
-	protected override void afterAddingCharacter(Character character){
+	protected override void afterAddingCharacter(BattleCharacter character){
 		setupActionPanel(character);
 	}
 
-	private void setupActionPanel(Character character){
+	private void setupActionPanel(BattleCharacter bc){
 		GameObject panel = CreateActionPanel();
 		panel.transform.SetParent(squadPanel);
 		CharacterActionPanel panelScript = panel.transform.GetComponent<CharacterActionPanel>();
-		panelScript.SetCharacterName(character.name);
-		panelScript.character = character;
+		panelScript.SetCharacterName(bc.character.name);
+		panelScript.character = bc;
 	}
 	
 	// Update is called once per frame

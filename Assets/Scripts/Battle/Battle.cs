@@ -15,6 +15,8 @@ public class Battle : MonoBehaviour {
 	private PlayerSquad heroes;
 	private EnemySquad enemies;
 
+	private bool executingAction = false;
+
 	public static void Begin(Character[] players, Character[] enemies, Enemy enemy){
 		BattleQueue.playerCharacters = enemies;
 		BattleQueue.enemyCharacters = players;
@@ -53,13 +55,26 @@ public class Battle : MonoBehaviour {
 			win();
 		}
 		if(BattleQueue.Empty()){
-			return; // TODO: wait for player and enemy turns
+			BattleQueue.waitingForPlayer = true;
+			BattleQueue.waitingForEnemies = true;
+		}
+		if(BattleQueue.waitingForPlayer || executingAction){
+			return;
+		}
+		if(BattleQueue.waitingForEnemies){
+			enemies.takeTurn();
+			return;
 		}
 		BattleAction action = BattleQueue.Dequeue();
 		if(action != null){
-			LogAction(action.message);
-			action.perform(this);
+			executingAction = true;
+			StartCoroutine(LogAction(action.message, () => performAction(action)));
 		}
+	}
+
+	private void performAction(BattleAction action){
+		action.perform(this);
+		executingAction = false;
 	}
 
 	private void win(){
@@ -73,10 +88,15 @@ public class Battle : MonoBehaviour {
         SceneHelper.UnloadScene("Battle");
 	}
 
-	public void LogAction(string message){
+	public IEnumerator LogAction(string message, System.Action callback){
+		yield return StartCoroutine(LogAction(message));
+		callback.Invoke();
+	}
+
+	public IEnumerator LogAction(string message){
 		actionsLog.setMessage(message);
 		actionsLog.display();
-		StartCoroutine(waitAndCloseActionLog(3));
+		yield return StartCoroutine(waitAndCloseActionLog(3));
 	}
 
 	private IEnumerator waitAndCloseActionLog(int seconds){

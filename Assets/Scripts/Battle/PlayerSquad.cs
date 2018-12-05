@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class PlayerSquad : Squad {
 	protected Transform squadPanel;
@@ -25,7 +26,7 @@ public class PlayerSquad : Squad {
 	
 	// Update is called once per frame
 	void Update () {
-
+		BattleQueue.waitingForPlayer = characters.All(x => x.waitingForAction);
 	}
 
 	GameObject CreateActionPanel(){

@@ -10,7 +10,8 @@ public class BattleQueue {
 	public static EnemySquad enemySquad;
 	public static Character[] playerCharacters;
 	public static Character[] enemyCharacters;
-	public static bool finished;
+	public static bool waitingForEnemies = true;
+	public static bool waitingForPlayer = true;
 
 	private static System.Random rnd = new System.Random();
 
@@ -31,8 +32,13 @@ public class BattleQueue {
 	}
 
 	public static BattleCharacter randomEnemy(){
-		List<BattleCharacter> enemies = enemySquad.aliveCharacters();
+		List<BattleCharacter> enemies = aliveEnemies();
 		return enemies[rnd.Next(enemies.Count)];
+	}
+
+	public static BattleCharacter randomPlayer(){
+		List<BattleCharacter> players = alivePlayers();
+		return players[rnd.Next(players.Count)];
 	}
 
 	public static List<BattleCharacter> aliveEnemies(){
@@ -47,7 +53,8 @@ public class BattleQueue {
 		playerSquad = null;
 		enemySquad = null;
 		enemy = null;
-		finished = false;
 		actions.Clear();
+		waitingForEnemies = true;
+		waitingForPlayer = true;
 	}
 }

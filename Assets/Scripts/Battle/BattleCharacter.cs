@@ -8,11 +8,16 @@ public class BattleCharacter : System.Object {
 
 	public Character character;
 	public GameObject gameObject;
+
+	private GameObject damageText;
 	private Animator animator;
 
 	public BattleCharacter(Character character){
 		this.character = character;
 		this.gameObject = gameObjectFromCharacter(character);
+		this.damageText = damageTextGameObject();
+		damageText.transform.position = gameObject.transform.position;
+		damageText.transform.SetParent(gameObject.transform);
 		this.animator = gameObject.GetComponent<Animator>();
 	}
 
@@ -32,14 +37,19 @@ public class BattleCharacter : System.Object {
 	public int Attack(BattleCharacter defender, Attack attack){
 		int damage = character.Attack(defender.character, attack);
 		defender.DisplayDamage(damage);
+		animator.SetTrigger("attack");
 		return damage;
 	}
 
 	public void DisplayDamage(int damage){
-		GameObject damageText = gameObject.transform.Find("Damage").gameObject;
 		damageText.GetComponent<Text>().text = damage.ToString();
 		damageText.GetComponent<Animator>().SetTrigger("show");
 		damageText.GetComponent<Animator>().SetTrigger("fade");
+	}
+
+	private GameObject damageTextGameObject(){
+		UnityEngine.Object prefab = Resources.Load("Prefabs/UI/Damage");
+		return MonoBehaviour.Instantiate(prefab) as GameObject;
 	}
 
 	private GameObject gameObjectFromCharacter(Character c){

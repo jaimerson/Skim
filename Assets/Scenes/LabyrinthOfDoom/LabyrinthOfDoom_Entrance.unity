@@ -1968,7 +1968,7 @@ MonoBehaviour:
     fire_resistance: 100
     water_resistance: 0
     bolt_resistance: 80
-    defense: 80
+    defense: 55
     currentHP: 200
     currentMP: 10
     maxHP: 200
@@ -1990,6 +1990,21 @@ MonoBehaviour:
     maxMP: 200
     alive: 1
     prefabPath: Enemies/RedImpSword
+    experienceDrop: 1000
+  - name: Capyroth
+    level: 10
+    strength: 100
+    magic: 8
+    fire_resistance: 9
+    water_resistance: 88
+    bolt_resistance: 88
+    defense: 33
+    currentHP: 200
+    currentMP: 200
+    maxHP: 200
+    maxMP: 200
+    alive: 1
+    prefabPath: Enemies/RedImpSwordShield
     experienceDrop: 1000
   alive: 1
 --- !u!1001 &2082123405

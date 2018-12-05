@@ -4,53 +4,84 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour {
 
-    public static Inventory instance;
+    [SerializeField] List<Item> items;      
+    [SerializeField] Transform itemsParent;
+    [SerializeField] ItemSlot[] itemSlots;
 
    
 
-    public delegate void OnItemChanged();
-    public OnItemChanged onItemChangedCallback;
-
-    public int space = 10;  // Amount of item spaces
-    // Our current list of items in the inventory
-    public List<Item> items = new List<Item>();
+    public static Inventory instance;
+      
+    
 
     void Awake()
     {
+       
         if (instance != null)
         {
             Debug.LogWarning("More than one instance of Inventory found!");
             return;
         }
 
-        instance = this;
+        
+        instance = this;        
+
     }
 
-    public void Add(Item item)
+    
+
+    private void OnValidate()
     {
-        if (item.showInInventory)
+        if (itemsParent != null)
+            itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
+
+        
+        RefreshUI();
+    }
+
+ 
+    private void RefreshUI()
+    {
+
+        int i = 0;
+        for (; i < items.Count && i < itemSlots.Length; i++)
         {
-            if (items.Count >= space)
-            {
-                Debug.Log("Not enough room.");
-                return;
-            }
-
-            items.Add(item);
-
-            if (onItemChangedCallback != null)
-                onItemChangedCallback.Invoke();
+            itemSlots[i].Item = items[i];
         }
+
+        for (; i < itemSlots.Length; i++)
+        {
+            itemSlots[i].Item = null;
+        }
+
+        
     }
 
-    // Remove an item
-    public void Remove(Item item)
+   
+
+    public bool AddItem (Item item)
     {
-        items.Remove(item);
+        if (IsFull())
+            return false;
 
-        if (onItemChangedCallback != null)
-            onItemChangedCallback.Invoke();
+        items.Add(item);
+       
+        RefreshUI();
+        return true;
     }
 
+    public bool RemoveItem(Item item)
+    {
+        if (items.Remove(item))
+        {
+            RefreshUI();
+            return true;
+        }
+        return false;
+    }
 
+    public bool IsFull()
+    {
+        return items.Count >= itemSlots.Length;
+    }
 }

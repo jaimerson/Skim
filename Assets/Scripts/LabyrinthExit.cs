@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LabyrinthExit : Exit {
 
@@ -10,11 +11,13 @@ public class LabyrinthExit : Exit {
 	const string finalSceneName = "LabyrinthOfDoom_Exit";
 	public static int[] CorrectIndexes;
 
-	protected override string sceneToLoad(){
-		if(index == correctIndex()){
-			return nextSceneName();
+
+    protected override string sceneToLoad(){
+		if(index == correctIndex()){            
+            return nextSceneName();
 		}else{
-			return entranceSceneName;
+           
+            return entranceSceneName;
 		}
 	}
 
@@ -29,7 +32,9 @@ public class LabyrinthExit : Exit {
 		if(CorrectIndexes != null && CorrectIndexes.Length > 0){
 			int correct = CorrectIndexes[0];
 			CorrectIndexes = CorrectIndexes.Skip(1).ToArray();
-			return correct;
+           
+            return correct;
+           
 		}
 		return -1;
 	}

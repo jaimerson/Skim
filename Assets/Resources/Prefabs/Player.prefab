@@ -25,9 +25,7 @@ GameObject:
   - component: {fileID: 50607589975582804}
   - component: {fileID: 61320089075976822}
   - component: {fileID: 108544089615628908}
-  - component: {fileID: 114617091831936052}
-  - component: {fileID: 114078106426243170}
-  - component: {fileID: 114387788046048032}
+  - component: {fileID: 114334208020643676}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -148,7 +146,7 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114078106426243170
+--- !u!114 &114334208020643676
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,12 +154,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1300811381972932}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 535ff5b14275dfe459fc952777fbff76, type: 3}
+  m_Script: {fileID: 11500000, guid: caea6333c3f8c2b4eaca4d5faf9794b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryUI: {fileID: 1203053343853998, guid: 1f6743438fb1ed448acb702b842dd586,
-    type: 2}
-  itemsParent: {fileID: 0}
+  items: []
 --- !u!114 &114350289896149372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -174,32 +170,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
---- !u!114 &114387788046048032
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1300811381972932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bde9d5b0de6b5d4f83775d9871c91f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  space: 10
-  items: []
---- !u!114 &114617091831936052
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1300811381972932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e0686bc6a139a540ae515148c3b4966, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  removeButton: {fileID: 0}
 --- !u!212 &212799449910109198
 SpriteRenderer:
   m_ObjectHideFlags: 1

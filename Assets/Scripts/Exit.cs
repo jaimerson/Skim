@@ -6,10 +6,19 @@ using UnityEngine.SceneManagement;
 public class Exit : MonoBehaviour {
 
     public string sceneName;
+    public Vector3 position;
+    public static Vector3 playerPosition;
 
 	void OnTriggerEnter2D(Collider2D collider){
-		SceneHelper.GoToScene(sceneToLoad());
-	}
+        SceneHelper.GoToScene(sceneToLoad());
+        if (position != null) {
+            Exit.playerPosition = position;
+        }
+        else
+        {
+            Exit.playerPosition = Vector3.zero;
+        }
+    }
 
 	protected virtual string sceneToLoad(){
 		// 0 = left
@@ -19,3 +28,6 @@ public class Exit : MonoBehaviour {
 		return sceneName;
 	}
 }
+//x 36.98
+//y -0.25
+//z -0.1852798

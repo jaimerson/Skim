@@ -18,6 +18,16 @@ public class PlayerController : MonoBehaviour {
 		animator.SetInteger("Direction", direction);
 	}
 
+    void Awake()
+    {
+        if (Exit.playerPosition != null && Exit.playerPosition != Vector3.zero)
+        {
+            transform.position = Exit.playerPosition;
+            Exit.playerPosition.z = Camera.main.transform.position.z;
+            Camera.main.transform.position = Exit.playerPosition;
+        }
+    }
+
 	// Update is called once per frame
 	void Update () {
 		float x = Input.GetAxis("Horizontal") * Time.deltaTime * 5.0f;

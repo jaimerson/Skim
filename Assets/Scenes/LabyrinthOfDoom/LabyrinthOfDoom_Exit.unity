@@ -303,6 +303,10 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: -0.93
       objectReference: {fileID: 0}
+    - target: {fileID: 4839693493752298, guid: 8e27153d7e3994f2aab5d2dcc173d16d, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e27153d7e3994f2aab5d2dcc173d16d, type: 2}
   m_IsPrefabAsset: 0
@@ -1313,7 +1317,27 @@ Prefab:
     - target: {fileID: 114466536373545918, guid: 2a812b19c94ac4611b092e5a5fdf65c6,
         type: 2}
       propertyPath: sceneName
-      value: LabyrinthOfDoom_Entrance
+      value: MainCave
+      objectReference: {fileID: 0}
+    - target: {fileID: 114466536373545918, guid: 2a812b19c94ac4611b092e5a5fdf65c6,
+        type: 2}
+      propertyPath: exitPositionObjectName
+      value: Puzzle1Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 114466536373545918, guid: 2a812b19c94ac4611b092e5a5fdf65c6,
+        type: 2}
+      propertyPath: position.z
+      value: -0.1852798
+      objectReference: {fileID: 0}
+    - target: {fileID: 114466536373545918, guid: 2a812b19c94ac4611b092e5a5fdf65c6,
+        type: 2}
+      propertyPath: position.y
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114466536373545918, guid: 2a812b19c94ac4611b092e5a5fdf65c6,
+        type: 2}
+      propertyPath: position.x
+      value: 36.98
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a812b19c94ac4611b092e5a5fdf65c6, type: 2}
@@ -1355,7 +1379,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4478063803987406, guid: c0f7435809847460f837e63b8cec4b11, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 212951699597820030, guid: c0f7435809847460f837e63b8cec4b11,
         type: 2}

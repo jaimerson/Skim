@@ -331,14 +331,14 @@ MonoBehaviour:
     level: 1
     strength: 100
     magic: 100
-    fire_resistance: 100
-    water_resistance: 100
-    bolt_resistance: 100
-    defense: 100
-    currentHP: 100
-    currentMP: 100
-    maxHP: 100
-    maxMP: 100
+    fire_resistance: 12
+    water_resistance: 0
+    bolt_resistance: 0
+    defense: 50
+    currentHP: 150
+    currentMP: 200
+    maxHP: 200
+    maxMP: 200
     alive: 1
     prefabPath: Sheila
 --- !u!212 &212012637311673110

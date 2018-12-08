@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Battle : MonoBehaviour {
@@ -16,6 +17,7 @@ public class Battle : MonoBehaviour {
 	private EnemySquad enemies;
 
 	private bool executingAction = false;
+	private bool battleOver = false;
 
 	public static void Begin(Character[] players, Character[] enemies, Enemy enemy){
 		BattleQueue.playerCharacters = enemies;
@@ -51,12 +53,19 @@ public class Battle : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if(battleOver) { return; }
 		if(enemies.allDead()){
 			win();
+			return;
 		}
-		if(BattleQueue.Empty()){
+		if(heroes.allDead()){
+			lose();
+			return;
+		}
+		if(BattleQueue.Empty() && !executingAction){
 			BattleQueue.WaitForPlayers();
 			BattleQueue.waitingForEnemies = true;
+			return;
 		}
 		if(BattleQueue.waitingForPlayer || executingAction){
 			return;
@@ -66,9 +75,9 @@ public class Battle : MonoBehaviour {
 			return;
 		}
 		BattleAction action = BattleQueue.Dequeue();
-		if(action != null){
+		if(action != null && action.canBePerformed()){
 			executingAction = true;
-			StartCoroutine(LogAction(action.message, () => performAction(action)));
+			LogAction(action.message, () => performAction(action));
 		}
 	}
 
@@ -78,9 +87,26 @@ public class Battle : MonoBehaviour {
 	}
 
 	private void win(){
-		LogAction("You won!");
-        enemy.alive = false;
-		endBattle();
+		battleOver = true;
+		LogAction("You won!", () => {
+			enemy.alive = false;
+			endBattle();
+		});
+	}
+
+	private void lose(){
+		battleOver = true;
+		LogAction("You lost!", () => {
+			UnityEngine.Object gameOverPrefab = Resources.Load("Prefabs/UI/GameOverCanvas");
+			GameObject gameOverCanvas = Instantiate(gameOverPrefab) as GameObject;
+			GameObject panel = gameOverCanvas.transform.GetChild(0).gameObject;
+			Graphic image = panel.GetComponent<Image>();
+			image.canvasRenderer.SetAlpha(0.0f);
+			image.CrossFadeAlpha(1.0f, 3.0f, true);
+			StartCoroutine(AsyncHelper.WaitFor(image.canvasRenderer.GetAlpha() >= 1.0f, () => {
+				StartCoroutine(AsyncHelper.WaitForSeconds(5, () => SceneHelper.GoToScene("MainCave")));
+			}));
+		});
 	}
 
 	private void endBattle(){
@@ -88,7 +114,11 @@ public class Battle : MonoBehaviour {
         SceneHelper.UnloadScene("Battle");
 	}
 
-	public IEnumerator LogAction(string message, System.Action callback){
+	public void LogAction(string message, System.Action callback){
+		StartCoroutine(logAction(message, callback));
+	}
+
+	private IEnumerator logAction(string message, System.Action callback){
 		yield return StartCoroutine(LogAction(message));
 		callback.Invoke();
 	}
@@ -96,11 +126,6 @@ public class Battle : MonoBehaviour {
 	public IEnumerator LogAction(string message){
 		actionsLog.setMessage(message);
 		actionsLog.display();
-		yield return StartCoroutine(waitAndCloseActionLog(3));
-	}
-
-	private IEnumerator waitAndCloseActionLog(int seconds){
-		yield return new WaitForSeconds(seconds);
-		actionsLog.hide();
+		yield return StartCoroutine(AsyncHelper.WaitForSeconds(2, () => actionsLog.hide()));
 	}
 }

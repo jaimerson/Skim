@@ -10,8 +10,15 @@ public class BattleCharacter : System.Object {
 	public GameObject gameObject;
 	public bool waitingForAction;
 
+	public bool alive {
+		get {
+			return character.alive;
+		}
+	}
+
 	private GameObject damageText;
 	private Animator animator;
+
 
 	public BattleCharacter(Character character){
 		this.character = character;
@@ -30,7 +37,7 @@ public class BattleCharacter : System.Object {
 		battle.LogAction("Don't know any spells :(");
 	}
 
-	public static void Item(BattleCharacter spellcaster, BattleCharacter target, Battle battle){
+	public static void Item(BattleCharacter itemUser, BattleCharacter target, Battle battle){
 		battle.LogAction("Don't have any items :(");
 	}
 

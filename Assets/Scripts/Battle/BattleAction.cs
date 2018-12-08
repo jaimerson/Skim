@@ -8,6 +8,10 @@ public class BattleAction  {
 	public BattleCharacter performer;
 	public BattleCharacter target;
 
+	public bool canBePerformed(){
+		return performer.alive;
+	}
+
 	public void perform(Battle battle){
 		this.action(this.performer, this.target, battle);
 	}

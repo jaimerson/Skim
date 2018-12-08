@@ -28,7 +28,7 @@ public class CharacterActionPanel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.actions.SetActive(character.waitingForAction);
+		this.actions.SetActive(character.character.alive && character.waitingForAction);
 		this.health.text = string.Format("{0}/\n{1}", this.characterObj.currentHP, this.characterObj.maxHP);
 		this.magic.text = string.Format("{0}/\n{1}", this.characterObj.currentMP, this.characterObj.maxMP);
 	}

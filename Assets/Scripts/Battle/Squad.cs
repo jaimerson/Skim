@@ -23,4 +23,10 @@ public class Squad : MonoBehaviour {
 	public bool allDead(){
 		return characters.All(x => !x.character.alive);
 	}
+
+	public void WaitForAction(){
+		foreach(BattleCharacter c in characters){
+			c.waitingForAction = true;
+		}
+	}
 }

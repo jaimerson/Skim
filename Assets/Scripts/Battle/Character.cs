@@ -20,9 +20,18 @@ public class Character : System.Object {
 	public bool alive = true;
 	public string prefabPath;
 
-	public int Attack(Character other, Attack attack){
-		return other.Defend(attack);
+	private Dictionary<string, int> resistances {
+		get {
+			return new Dictionary<string, int> {
+				{"fire", fire_resistance},
+				{"bolt", bolt_resistance},
+				{"water", water_resistance}
+			};
+		}
 	}
+
+	private readonly float resistanceMultiplier = 0.3f;
+	private System.Random random = new System.Random();
 
 	public int Defend(Attack attack){
 		int damage = this.damage(attack);
@@ -39,15 +48,8 @@ public class Character : System.Object {
 	}
 	
 	private int damage(Attack attack){
-		switch(attack.type){
-			case "fire":
-				return Math.Max(attack.power - this.fire_resistance, 0);
-			case "water":
-				return Math.Max(attack.power - this.water_resistance, 0);
-			case "bolt":
-				return Math.Max(attack.power - this.bolt_resistance, 0);
-			default:
-				return Math.Max(attack.power - this.defense, 0);
-		}
+		int resistance = attack.type != null && resistances.ContainsKey(attack.type) ? resistances[attack.type] : this.defense;
+		double power = random.Next(-5, 5) + attack.power; // For aesthetics but doesn't really affect gameplay that much
+		return (int) Math.Max(power - resistance * this.resistanceMultiplier, 0);
 	}
 }

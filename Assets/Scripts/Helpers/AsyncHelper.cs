@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AsyncHelper : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public static IEnumerator WaitFor(bool condition, System.Action callback){
+		if(!condition){
+			yield return new WaitForSeconds(0.1f);
+		}	
+		callback.Invoke();
 	}
 }

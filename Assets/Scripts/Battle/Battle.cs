@@ -55,7 +55,7 @@ public class Battle : MonoBehaviour {
 			win();
 		}
 		if(BattleQueue.Empty()){
-			BattleQueue.waitingForPlayer = true;
+			BattleQueue.WaitForPlayers();
 			BattleQueue.waitingForEnemies = true;
 		}
 		if(BattleQueue.waitingForPlayer || executingAction){

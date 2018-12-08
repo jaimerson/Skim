@@ -36,14 +36,19 @@ public class BattleCharacter : System.Object {
 
 
 	public int Attack(BattleCharacter defender, Attack attack){
-		int damage = character.Attack(defender.character, attack);
-		defender.DisplayDamage(damage);
+		int damage = defender.Defend(attack);
 		animator.SetTrigger("attack");
 		return damage;
 	}
 
+	public int Defend(Attack attack){
+		int damage = character.Defend(attack);
+		DisplayDamage(damage);
+		return damage;
+	}
+
 	public void DisplayDamage(int damage){
-		damageText.GetComponent<Text>().text = damage.ToString();
+		damageText.GetComponent<Text>().text = damage == 0 ? "miss" : damage.ToString();
 		damageText.GetComponent<Animator>().SetTrigger("show");
 		damageText.GetComponent<Animator>().SetTrigger("fade");
 	}

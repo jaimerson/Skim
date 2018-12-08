@@ -49,6 +49,11 @@ public class BattleQueue {
 		return playerSquad.aliveCharacters();
 	}
 
+	public static void WaitForPlayers(){
+		waitingForPlayer = true;
+		playerSquad.WaitForAction();
+	}
+
 	public static void Reset(){
 		playerSquad = null;
 		enemySquad = null;

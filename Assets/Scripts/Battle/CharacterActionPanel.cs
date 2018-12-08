@@ -28,13 +28,13 @@ public class CharacterActionPanel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.actions.SetActive(!character.waitingForAction);
+		this.actions.SetActive(character.waitingForAction);
 		this.health.text = string.Format("{0}/\n{1}", this.characterObj.currentHP, this.characterObj.maxHP);
 		this.magic.text = string.Format("{0}/\n{1}", this.characterObj.currentMP, this.characterObj.maxMP);
 	}
 
 	private void spell(){
-		BattleQueue.Enqueue(
+		EnqueueAction(
 			new BattleAction {
 				performer = this.character,
 				message = string.Format("{0} casts spell", this.character.character.name),
@@ -45,7 +45,7 @@ public class CharacterActionPanel : MonoBehaviour {
 	}
 
 	private void item(){
-		BattleQueue.Enqueue(
+		EnqueueAction(
 			new BattleAction {
 				performer = this.character,
 				message = string.Format("{0} uses item", this.character.character.name),
@@ -57,7 +57,7 @@ public class CharacterActionPanel : MonoBehaviour {
 
 	private void attack(){
 		BattleCharacter victim = BattleQueue.randomEnemy();
-		BattleQueue.Enqueue(
+		EnqueueAction(
 			new BattleAction {
 				performer = this.character,
 				message = string.Format("{0} attacks {1}", this.character.character.name, victim.character.name),
@@ -65,5 +65,10 @@ public class CharacterActionPanel : MonoBehaviour {
 				target=victim
 			}
 		);
+	}
+
+	private void EnqueueAction(BattleAction action){
+		this.character.waitingForAction = false;
+		BattleQueue.Enqueue(action);
 	}
 }

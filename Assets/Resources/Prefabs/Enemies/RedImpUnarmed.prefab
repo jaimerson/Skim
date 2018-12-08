@@ -81,7 +81,7 @@ MonoBehaviour:
   squad:
   - name: Belzebub
     level: 3
-    strength: 100
+    strength: 30
     magic: 60
     fire_resistance: 100
     water_resistance: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
     experienceDrop: 1000
   - name: Satan
     level: 5
-    strength: 100
+    strength: 25
     magic: 8
     fire_resistance: 9
     water_resistance: 88
@@ -111,7 +111,7 @@ MonoBehaviour:
     experienceDrop: 1000
   - name: Capyroth
     level: 10
-    strength: 100
+    strength: 50
     magic: 8
     fire_resistance: 9
     water_resistance: 88

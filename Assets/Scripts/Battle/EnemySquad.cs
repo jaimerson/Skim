@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySquad : Squad {
 
     public void takeTurn(){
-        foreach(BattleCharacter c in characters){
+        foreach(BattleCharacter c in aliveCharacters()){
             enqueueAttack(c);
         }
         BattleQueue.waitingForEnemies = false;

@@ -33,10 +33,10 @@ public class Battle : MonoBehaviour {
 		this.enemies = this.actionsPanel.GetComponent<EnemySquad>();
 		this.enemy = BattleQueue.enemy;
 		foreach(Character h in BattleQueue.playerCharacters){
-			AddHero(h);
+			AddHero(Instantiate(h));
 		}
 		foreach(Character e in BattleQueue.enemyCharacters){
-			AddEnemy(e);
+			AddEnemy(Instantiate(e));
 		}
 		BattleQueue.playerSquad = this.heroes;
 		BattleQueue.enemySquad = this.enemies;

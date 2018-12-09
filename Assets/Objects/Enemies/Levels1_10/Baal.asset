@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2152ef5ee77b4f079bfeab1f578798d, type: 3}
+  m_Name: Baal
+  m_EditorClassIdentifier: 
+  name: Ba'al
+  level: 3
+  strength: 30
+  magic: 0
+  fire_resistance: 100
+  water_resistance: 0
+  bolt_resistance: 80
+  defense: 80
+  currentHP: 100
+  currentMP: 100
+  maxHP: 100
+  maxMP: 100
+  alive: 1
+  prefab: {fileID: 1658477514915690, guid: c1b44f1dd3ce14e198ded6a11adeff50, type: 2}
+  experienceDrop: 100
+  goldDrop: 1000

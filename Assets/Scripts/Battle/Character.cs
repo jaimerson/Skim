@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 
 [System.Serializable]
-public class Character : System.Object {
+public class Character : ScriptableObject {
 	public string name = "Character";
 	public int level = 1;
 	public int strength = 10;
@@ -18,7 +18,7 @@ public class Character : System.Object {
 	public int maxHP = 100;
 	public int maxMP = 100;
 	public bool alive = true;
-	public string prefabPath;
+	public UnityEngine.Object prefab;
 
 	private Dictionary<string, int> resistances {
 		get {

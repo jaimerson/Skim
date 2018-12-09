@@ -66,7 +66,6 @@ public class BattleCharacter : System.Object {
 	}
 
 	private GameObject gameObjectFromCharacter(Character c){
-		UnityEngine.Object prefab = Resources.Load(string.Format("Prefabs/Battle/{0}",character.prefabPath));
-		return MonoBehaviour.Instantiate(prefab) as GameObject;
+		return MonoBehaviour.Instantiate(c.prefab) as GameObject;
 	}
 }

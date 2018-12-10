@@ -28,6 +28,7 @@ public class Battle : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Game.SetState(Game.State.IN_BATTLE);
 		this.actionsLog = this.actionsLogGameObject.GetComponent<ActionsLog>();
 		this.heroes = this.actionsPanel.GetComponent<PlayerSquad>();
 		this.enemies = this.actionsPanel.GetComponent<EnemySquad>();
@@ -110,6 +111,7 @@ public class Battle : MonoBehaviour {
 	}
 
 	private void endBattle(){
+		Game.SetPreviousState();
 		BattleQueue.Reset();
         SceneHelper.UnloadScene("Battle");
 	}

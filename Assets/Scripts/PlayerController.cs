@@ -8,10 +8,11 @@ public class PlayerController : MonoBehaviour {
 	public AudioSource rightAudioSource;
 
 	private AudioSource audioSource;
-	enum Directions { Up, Down, Left, Right };
+	public enum Directions { Up, Down, Left, Right };
 	int direction;
 
 	void Start () {
+		Game.currentState = Game.State.INDOORS;
 		audioSource = GetComponent<AudioSource>();
 		animator = GetComponent<Animator>();
 		direction = (int)Directions.Right;
@@ -20,6 +21,9 @@ public class PlayerController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if(Game.currentState != Game.State.WORLD && Game.currentState != Game.State.INDOORS){
+			return;
+		}
 		float x = Input.GetAxis("Horizontal") * Time.deltaTime * 5.0f;
 		float y = Input.GetAxis("Vertical") * Time.deltaTime * 5.0f;
 		animator.SetFloat("WalkingSpeed", Math.Max(Math.Abs(x), Math.Abs(y)));

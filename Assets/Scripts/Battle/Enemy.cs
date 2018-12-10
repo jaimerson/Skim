@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision){
 		if(collision.gameObject.tag == "Player"){
-			Battle.Begin(this.squad, collision.gameObject.GetComponent<Player>().squad, this);
+			Battle.Begin(this.squad, Game.current.characters, this);
 		}
 	}
 }

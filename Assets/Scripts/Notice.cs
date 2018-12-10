@@ -17,12 +17,4 @@ public class Notice : Interactable {
 	protected override bool canInteract(){
 		return dialog == null || !dialog.activeSelf;
 	}
-
-	protected override void OnEnterInteractionPossible(){
-		gameObject.GetComponent<Light>().enabled = true;
-	}
-
-	protected override void OnExitInteractionPossible(){
-		gameObject.GetComponent<Light>().enabled = false;
-	}
 }

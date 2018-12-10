@@ -8,7 +8,7 @@ public class BattleQueue {
 	private static Queue<BattleAction> actions = new Queue<BattleAction>();
 	public static PlayerSquad playerSquad;
 	public static EnemySquad enemySquad;
-	public static Character[] playerCharacters;
+	public static List<Character> playerCharacters;
 	public static Character[] enemyCharacters;
 	public static bool waitingForEnemies = true;
 	public static bool waitingForPlayer{

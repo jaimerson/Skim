@@ -19,7 +19,7 @@ public class Battle : MonoBehaviour {
 	private bool executingAction = false;
 	private bool battleOver = false;
 
-	public static void Begin(Character[] players, Character[] enemies, Enemy enemy){
+	public static void Begin(Character[] players, List<Character> enemies, Enemy enemy){
 		BattleQueue.playerCharacters = enemies;
 		BattleQueue.enemyCharacters = players;
 		BattleQueue.enemy = enemy;

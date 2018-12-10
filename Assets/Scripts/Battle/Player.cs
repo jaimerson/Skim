@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	public Character[] squad;
-
 	// Use this for initialization
 	void Start () {
 		

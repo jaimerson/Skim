@@ -12,6 +12,17 @@ public class Game {
 		MAIN_MENU
 	}
 
+	public List<Character> characters;
+
+	public static Game current;
+
+	public Game(List<Character> characters){
+		this.characters = new List<Character>();
+		foreach(Character c in characters){
+			this.characters.Add(GameObject.Instantiate(c) as Character);
+		}
+	}
+
 	public static State currentState;
 	private static State previousState;
 

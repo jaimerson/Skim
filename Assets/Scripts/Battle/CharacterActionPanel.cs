@@ -56,13 +56,16 @@ public class CharacterActionPanel : MonoBehaviour {
 	}
 
 	private void attack(){
-		BattleCharacter victim = BattleQueue.randomEnemy();
+		CharacterSelector.SelectOne(BattleQueue.enemySquad.aliveCharacters());
+	}
+
+	private void attack(BattleCharacter target){
 		EnqueueAction(
 			new BattleAction {
 				performer = this.character,
-				message = string.Format("{0} attacks {1}", this.character.character.name, victim.character.name),
+				message = string.Format("{0} attacks {1}", this.characterObj.name, target.character.name),
 				action=BattleCharacter.Attack,
-				target=victim
+				target=target
 			}
 		);
 	}

@@ -32,7 +32,6 @@ public class Battle : MonoBehaviour {
 		this.heroes = this.actionsPanel.GetComponent<PlayerSquad>();
 		this.enemies = this.actionsPanel.GetComponent<EnemySquad>();
 		this.enemy = BattleQueue.enemy;
-		Debug.Log(BattleQueue.playerCharacters);
 		foreach(Character h in BattleQueue.playerCharacters){
 			AddHero(Instantiate(h));
 		}

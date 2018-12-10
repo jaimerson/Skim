@@ -1,4 +1,4 @@
 <b>Warning</b>
 
 The facility has been taken by several monsters.
-</b>Red Imps<b> are exremely weak to <b>water damage</b>.
+<b>Red Imps</b> are exremely weak to <b>water damage</b>.

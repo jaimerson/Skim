@@ -37,11 +37,14 @@ public class SceneHelper : MonoBehaviour {
 
 	public void LoadScene(string sceneName, LoadSceneMode mode){
 		StartCoroutine(fadeToBlack(
-			() => SceneManager.LoadScene(sceneName, mode))
+			() => {
+				SceneManager.LoadScene(sceneName, mode);
+			})
 		);
 	}
 
 	public IEnumerator fadeToBlack(System.Action action){
+		Time.timeScale = 0.0f;
 		fade.canvasRenderer.SetAlpha(0.0f);
 		fade.CrossFadeAlpha(1.0f, 1.0f, true);
 
@@ -49,6 +52,7 @@ public class SceneHelper : MonoBehaviour {
 			yield return null;
 		}
 
+		Time.timeScale = 1.0f;
 		action.Invoke();
 	}
 

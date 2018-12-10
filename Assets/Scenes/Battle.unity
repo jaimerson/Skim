@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 190410721}
   - component: {fileID: 190410726}
   - component: {fileID: 190410725}
+  - component: {fileID: 190410727}
   m_Layer: 5
   m_Name: BattleCanvas
   m_TagString: Untagged
@@ -349,6 +350,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointerPrefab: {fileID: 1240000243709136, guid: 88c8c5cc020a745f3af4226347ab3728,
     type: 2}
+--- !u!225 &190410727
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 190410720}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &333967495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,7 +1170,7 @@ GameObject:
   - component: {fileID: 1687559516}
   m_Layer: 0
   m_Name: EventSystem
-  m_TagString: Untagged
+  m_TagString: Battle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1180,7 +1192,7 @@ MonoBehaviour:
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_ForceModuleActive: 1
 --- !u!114 &1687559517
 MonoBehaviour:
   m_ObjectHideFlags: 0

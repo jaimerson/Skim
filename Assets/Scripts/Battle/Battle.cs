@@ -103,7 +103,7 @@ public class Battle : MonoBehaviour {
 			Graphic image = panel.GetComponent<Image>();
 			image.canvasRenderer.SetAlpha(0.0f);
 			image.CrossFadeAlpha(1.0f, 3.0f, true);
-			StartCoroutine(AsyncHelper.WaitFor(image.canvasRenderer.GetAlpha() >= 1.0f, () => {
+			StartCoroutine(AsyncHelper.WaitFor(() => image.canvasRenderer.GetAlpha() >= 1.0f, () => {
 				StartCoroutine(AsyncHelper.WaitForSeconds(5, () => SceneHelper.GoToScene("MainCave")));
 			}));
 		});

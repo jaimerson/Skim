@@ -10,6 +10,7 @@ public class CharacterActionPanel : MonoBehaviour {
 
 	public BattleCharacter character;
 	private Character characterObj { get { return character.character; } }
+	private bool waitingForSelection;
 
 	public Button attackButton, itemButton, spellButton;
 	public Text health;
@@ -56,7 +57,12 @@ public class CharacterActionPanel : MonoBehaviour {
 	}
 
 	private void attack(){
+		character.waitingForAction = false;
 		CharacterSelector.SelectOne(BattleQueue.enemySquad.aliveCharacters());
+		StartCoroutine(AsyncHelper.WaitFor(() => CharacterSelector.selectionConfirmed, () => {
+			attack(CharacterSelector.selected);
+			CharacterSelector.Reset();
+		}));
 	}
 
 	private void attack(BattleCharacter target){
@@ -73,5 +79,9 @@ public class CharacterActionPanel : MonoBehaviour {
 	private void EnqueueAction(BattleAction action){
 		this.character.waitingForAction = false;
 		BattleQueue.Enqueue(action);
+	}
+
+	private IEnumerator wait(){
+		yield return new WaitForSeconds(0.1f);
 	}
 }

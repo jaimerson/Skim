@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterSelector : MonoBehaviour {
 	public static List<BattleCharacter> options;
 	public static BattleCharacter selected;
+	public static bool selectionConfirmed = false;
 
 	public UnityEngine.Object pointerPrefab;
 	private BattleCharacter selectedChar;
@@ -17,16 +18,16 @@ public class CharacterSelector : MonoBehaviour {
 	public static void Reset(){
 		options = null;
 		selected = null;
+		selectionConfirmed = false;
 	}
 
 	void Start(){
 		this.pointer = Instantiate(pointerPrefab) as GameObject;
 		pointer.SetActive(false);
-//		pointer.transform.position = Vector3.zero;
+		pointer.transform.position = Vector3.zero;
 	}
 	
 	void Update(){
-		var options = CharacterSelector.options;
 		if(options != null && options.Count > 0){
 			if(selected == null){
 				markSelected(options[0]);
@@ -35,22 +36,34 @@ public class CharacterSelector : MonoBehaviour {
 				selectPrevious();
 			}else if(Input.GetKeyDown(KeyCode.RightArrow)){
 				selectNext();
-			}else if(Input.GetKeyDown(KeyCode.Return)){
-
+			}else if(Input.GetButtonDown("Submit")){
+				selectionConfirmed = true;
+				pointer.SetActive(false);
 			}
 		}
 	}
 
 	void selectNext(){
-
+		Debug.Log(options);
+		int selectedIndex = options.IndexOf(selected);
+		if(selectedIndex == options.Count - 1){
+			markSelected(options[0]);
+		}else{
+			markSelected(options[selectedIndex + 1]);
+		}
 	}
 
 	void selectPrevious(){
-
+		int selectedIndex = options.IndexOf(selected);
+		if(selectedIndex == 0){
+			markSelected(options[options.Count - 1]);
+		}else{
+			markSelected(options[selectedIndex - 1]);
+		}
 	}
 
 	void markSelected(BattleCharacter character){
-        selected = options[0];
+        selected = character;
 		pointer.transform.SetParent(selected.gameObject.transform);
 		pointer.transform.localPosition = Vector3.zero;
 		pointer.SetActive(true);

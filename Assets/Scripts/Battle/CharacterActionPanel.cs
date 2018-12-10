@@ -29,7 +29,7 @@ public class CharacterActionPanel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.actions.SetActive(character.character.alive && character.waitingForAction);
+		this.actions.SetActive(!waitingForSelection && character.character.alive && character.waitingForAction);
 		this.health.text = string.Format("{0}/\n{1}", this.characterObj.currentHP, this.characterObj.maxHP);
 		this.magic.text = string.Format("{0}/\n{1}", this.characterObj.currentMP, this.characterObj.maxMP);
 	}
@@ -57,11 +57,12 @@ public class CharacterActionPanel : MonoBehaviour {
 	}
 
 	private void attack(){
-		character.waitingForAction = false;
+		this.waitingForSelection = true;
 		CharacterSelector.SelectOne(BattleQueue.enemySquad.aliveCharacters());
 		StartCoroutine(AsyncHelper.WaitFor(() => CharacterSelector.selectionConfirmed, () => {
 			attack(CharacterSelector.selected);
 			CharacterSelector.Reset();
+			this.waitingForSelection = false;
 		}));
 	}
 
@@ -79,9 +80,5 @@ public class CharacterActionPanel : MonoBehaviour {
 	private void EnqueueAction(BattleAction action){
 		this.character.waitingForAction = false;
 		BattleQueue.Enqueue(action);
-	}
-
-	private IEnumerator wait(){
-		yield return new WaitForSeconds(0.1f);
 	}
 }

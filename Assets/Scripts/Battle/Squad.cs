@@ -15,6 +15,8 @@ public class Squad : MonoBehaviour {
 
 	protected virtual void afterAddingCharacter(BattleCharacter character){
 	}
+	protected virtual void onWaitForAction(){
+	}
 
 	public List<BattleCharacter> aliveCharacters(){
 		return characters.Where(x => x.character.alive).ToList();
@@ -28,5 +30,6 @@ public class Squad : MonoBehaviour {
 		foreach(BattleCharacter c in characters){
 			c.waitingForAction = true;
 		}
+		onWaitForAction();
 	}
 }

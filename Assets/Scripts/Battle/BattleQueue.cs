@@ -11,7 +11,11 @@ public class BattleQueue {
 	public static Character[] playerCharacters;
 	public static Character[] enemyCharacters;
 	public static bool waitingForEnemies = true;
-	public static bool waitingForPlayer = true;
+	public static bool waitingForPlayer{
+		get {
+			return playerSquad.characters.Any(x => x.waitingForAction);
+		}
+	}
 
 	private static System.Random rnd = new System.Random();
 
@@ -50,7 +54,6 @@ public class BattleQueue {
 	}
 
 	public static void WaitForPlayers(){
-		waitingForPlayer = true;
 		playerSquad.WaitForAction();
 	}
 
@@ -60,6 +63,5 @@ public class BattleQueue {
 		enemy = null;
 		actions.Clear();
 		waitingForEnemies = true;
-		waitingForPlayer = true;
 	}
 }

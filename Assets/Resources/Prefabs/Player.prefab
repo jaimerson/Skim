@@ -327,20 +327,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squad:
-  - name: Sheila
-    level: 1
-    strength: 100
-    magic: 100
-    fire_resistance: 12
-    water_resistance: 0
-    bolt_resistance: 0
-    defense: 50
-    currentHP: 150
-    currentMP: 200
-    maxHP: 200
-    maxMP: 200
-    alive: 1
-    prefabPath: Sheila
+  - {fileID: 11400000, guid: 27f42fb018ed9472796222cdcffcfd92, type: 2}
+  - {fileID: 11400000, guid: 21d0d28647d614e7fbabe96d2ea0f903, type: 2}
 --- !u!212 &212012637311673110
 SpriteRenderer:
   m_ObjectHideFlags: 1

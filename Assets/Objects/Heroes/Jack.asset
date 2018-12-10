@@ -9,21 +9,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36fdf59df80da4fc0a5cf72919851bff, type: 3}
-  m_Name: Sheila
+  m_Name: Jack
   m_EditorClassIdentifier: 
-  name: Sheila
+  name: Jack
   level: 1
-  strength: 100
-  magic: 200
-  fire_resistance: 80
-  water_resistance: 70
-  bolt_resistance: 120
-  defense: 100
-  currentHP: 200
-  currentMP: 200
-  maxHP: 200
-  maxMP: 200
+  strength: 150
+  magic: 150
+  fire_resistance: 50
+  water_resistance: 50
+  bolt_resistance: 50
+  defense: 120
+  currentHP: 250
+  currentMP: 100
+  maxHP: 250
+  maxMP: 100
   alive: 1
-  prefab: {fileID: 1920931284528300, guid: b14653458e6b946978181d5910d63f79, type: 2}
+  prefab: {fileID: 1404036008139950, guid: 5830a8ab60a2a4ddc94617b48545072d, type: 2}
   experience: 0
   nextLevelExperience: 1000

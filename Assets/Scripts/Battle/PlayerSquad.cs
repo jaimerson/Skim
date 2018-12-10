@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
+using UnityEngine.EventSystems;
 
 public class PlayerSquad : Squad {
 	protected Transform squadPanel;
@@ -10,6 +11,11 @@ public class PlayerSquad : Squad {
 	// Use this for initialization
 	void Awake () {
 		this.squadPanel = transform.Find("PlayerSquadPanel");
+	}
+
+	protected override void onWaitForAction(){
+		// For some reason this breaks enemy selection
+		//selectAttackButton();
 	}
 
 	protected override void afterAddingCharacter(BattleCharacter character){
@@ -23,13 +29,14 @@ public class PlayerSquad : Squad {
 		panelScript.SetCharacterName(bc.character.name);
 		panelScript.character = bc;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		BattleQueue.waitingForPlayer = characters.All(x => x.waitingForAction);
+
+	private void selectAttackButton(){
+        if (EventSystem.current != null){
+            EventSystem.current.SetSelectedGameObject(GameObject.Find("Attack"));
+        }
 	}
 
-	GameObject CreateActionPanel(){
+	private GameObject CreateActionPanel(){
 		GameObject actionPanel = Instantiate(
 			Resources.Load("Prefabs/Battle/CharacterActionPanel") as GameObject);
 		return actionPanel;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Ba'al
   level: 3
-  strength: 30
+  strength: 100
   magic: 0
   fire_resistance: 100
   water_resistance: 0

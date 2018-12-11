@@ -112,6 +112,7 @@ public class Battle : MonoBehaviour {
 
 	private void endBattle(){
 		Game.SetPreviousState();
+		Game.current.characters = heroes.characters;
 		BattleQueue.Reset();
         SceneHelper.UnloadScene("Battle");
 	}

@@ -13,7 +13,7 @@ public class BattleQueue {
 	public static bool waitingForEnemies = true;
 	public static bool waitingForPlayer{
 		get {
-			return playerSquad.characters.Any(x => x.waitingForAction);
+			return playerSquad.battleCharacters.Any(x => x.waitingForAction);
 		}
 	}
 

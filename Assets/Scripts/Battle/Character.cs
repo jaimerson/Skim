@@ -18,6 +18,12 @@ public class Character : ScriptableObject {
 	public int maxHP = 100;
 	public int maxMP = 100;
 	public bool alive = true;
+
+	public bool dead{
+		get{
+			return !alive;
+		}
+	}
 	public UnityEngine.Object prefab;
 
 	private Dictionary<string, int> resistances {

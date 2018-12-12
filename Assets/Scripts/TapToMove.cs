@@ -42,10 +42,9 @@ public class TapToMove : MonoBehaviour
             gameObject.GetComponent<Rigidbody2D>().MovePosition(Vector3.Lerp(transform.position, endPoint, 1 / (duration * (Vector3.Distance(transform.position, endPoint)))));
         }
         //set the movement indicator flag to false if the endPoint and current gameobject position are equal
-        else if (flag && Mathf.Approximately(gameObject.transform.position.magnitude, endPoint.magnitude))
+        else if (flag)
         {
             flag = false;
-            Debug.Log("I am here");
         }
 
     }

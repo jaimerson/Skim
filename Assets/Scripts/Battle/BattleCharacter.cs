@@ -51,6 +51,9 @@ public class BattleCharacter : System.Object {
 	public int Defend(Attack attack){
 		int damage = character.Defend(attack);
 		DisplayDamage(damage);
+		if(character.dead){
+			animator.SetTrigger("die");
+		}
 		return damage;
 	}
 

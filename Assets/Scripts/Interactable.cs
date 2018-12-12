@@ -86,7 +86,7 @@ public class Interactable : MonoBehaviour {
 
 	protected IEnumerator setupInteractPrompt(){
 		if(interactPrompt != null) yield return null;
-		interactPrompt = InteractPrompt.Create(string.Format("({0}) {1}", InteractKey, promptText));
+		interactPrompt = InteractPrompt.Create(string.Format("({0}) {1}", InteractKey, promptText), () => executeAction());
 		yield return null;
 	}
 }

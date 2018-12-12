@@ -5,5 +5,4 @@ public class Attack {
 
 	public int power;
 	public string type;
-	public string name;
 }

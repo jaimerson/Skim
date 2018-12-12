@@ -9,21 +9,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2152ef5ee77b4f079bfeab1f578798d, type: 3}
-  m_Name: Asura
+  m_Name: Banshee
   m_EditorClassIdentifier: 
-  name: Asura
-  level: 4
-  strength: 70
+  name: Banshee
+  level: 10
+  strength: 200
   magic: 0
-  fire_resistance: 100
+  fire_resistance: 150
   water_resistance: 0
-  bolt_resistance: 80
-  defense: 90
-  currentHP: 120
-  currentMP: 0
-  maxHP: 120
-  maxMP: 0
+  bolt_resistance: 100
+  defense: 120
+  currentHP: 200
+  currentMP: 100
+  maxHP: 200
+  maxMP: 100
   alive: 1
-  prefab: {fileID: 1908705429900478, guid: 080eb1a70bd75464c88765f7087680a6, type: 2}
-  experienceDrop: 150
-  goldDrop: 1000
+  prefab: {fileID: 1582281088738270, guid: 42c09f32974c303469ad2e378675d29b, type: 2}
+  experienceDrop: 1000
+  goldDrop: 5000

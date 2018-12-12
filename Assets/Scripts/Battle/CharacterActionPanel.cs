@@ -25,6 +25,8 @@ public class CharacterActionPanel : MonoBehaviour {
 		this.attackButton.onClick.AddListener(attack);
 		this.spellButton.onClick.AddListener(spell);
 		this.itemButton.onClick.AddListener(item);
+		this.spellButton.interactable = Game.current.spells.Count > 0;
+		this.itemButton.interactable = false;
 	}
 	
 	// Update is called once per frame

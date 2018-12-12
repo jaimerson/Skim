@@ -6,6 +6,7 @@ using UnityEngine;
 public class Game {
 
 	public List<Character> characters;
+	public List<Spell> spells;
 
 	public static Game current = defaultGame;
 

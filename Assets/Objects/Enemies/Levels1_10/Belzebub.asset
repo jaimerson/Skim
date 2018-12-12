@@ -9,21 +9,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2152ef5ee77b4f079bfeab1f578798d, type: 3}
-  m_Name: Asura
+  m_Name: Belzebub
   m_EditorClassIdentifier: 
-  name: Asura
-  level: 4
-  strength: 70
+  name: Belzebub
+  level: 5
+  strength: 120
   magic: 0
-  fire_resistance: 100
-  water_resistance: 0
+  fire_resistance: 110
+  water_resistance: 10
   bolt_resistance: 80
-  defense: 90
-  currentHP: 120
-  currentMP: 0
-  maxHP: 120
-  maxMP: 0
+  defense: 100
+  currentHP: 100
+  currentMP: 100
+  maxHP: 100
+  maxMP: 100
   alive: 1
-  prefab: {fileID: 1908705429900478, guid: 080eb1a70bd75464c88765f7087680a6, type: 2}
-  experienceDrop: 150
-  goldDrop: 1000
+  prefab: {fileID: 1800763156224532, guid: f1f07cb3880d96b418d17d448f1f3a03, type: 2}
+  experienceDrop: 300
+  goldDrop: 2000

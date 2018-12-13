@@ -14,15 +14,21 @@ public class Game {
 	private static Game defaultGame {
 		get {
 			List<Character> characters = new List<Character>();
+			List<Spell> spells = new List<Spell>();
+
 			characters.Add(
 				new Character {
 					name="Jack",
 					strength=100,
 					defense=100,
+					magic=100,
 					prefab=GameObject.Instantiate(Resources.Load("Prefabs/Battle/Jack"))
 				}	
 			);
-			return new Game(characters);
+			Game game =  new Game(characters);
+			game.spells = spells;
+
+			return game;
 		}
 	}
 

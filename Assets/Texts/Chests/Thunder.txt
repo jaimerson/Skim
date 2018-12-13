@@ -1,0 +1,4 @@
+<b><size=30>You found 1 new spell!</size></b>
+
+
+<b><color=#000daf>Thunder</color></b> deals great damage on enemies weak against <b>bolt</b>.

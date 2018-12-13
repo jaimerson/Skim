@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TreasureChestController : Interactable {
-	Animator animator;
-	bool open;
+	protected Animator animator;
+	protected bool open;
 
 	public override void Setup(){
 		promptText = "Open";
@@ -25,14 +25,14 @@ public class TreasureChestController : Interactable {
 		openAndShowItem();
 	}
 
-    private void openAndShowItem() {
+    protected void openAndShowItem() {
 		open = true;
         animator.SetTrigger("open");
 
         Invoke("showMessage", 1f);
     }
 
-    private void showMessage () {
+    protected virtual void showMessage () {
         var message = ModalDialog.Create("You found *potion*!");
         message.SetActive(true);
     }

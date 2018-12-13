@@ -1,0 +1,6 @@
+<b><size=30>You found 2 new spells!</size></b>
+
+
+<b><color=blue>Splash</color></b> deals great damage on enemies weak against <b>water</b>, such as <b>red imps</b>.
+
+<b><color=red>Burn</color></b> is effective against enemies vulnerable to fire.

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2152ef5ee77b4f079bfeab1f578798d, type: 3}
+  m_Name: Banshee
+  m_EditorClassIdentifier: 
+  name: Banshee
+  level: 10
+  strength: 200
+  magic: 0
+  fire_resistance: 150
+  water_resistance: 0
+  bolt_resistance: 100
+  defense: 120
+  currentHP: 200
+  currentMP: 100
+  maxHP: 200
+  maxMP: 100
+  alive: 1
+  prefab: {fileID: 1582281088738270, guid: 42c09f32974c303469ad2e378675d29b, type: 2}
+  experienceDrop: 1000
+  goldDrop: 5000

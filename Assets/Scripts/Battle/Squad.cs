@@ -4,11 +4,16 @@ using UnityEngine;
 using System.Linq;
 
 public class Squad : MonoBehaviour {
-	public List<BattleCharacter> characters;
+	public List<BattleCharacter> battleCharacters;
+	public List<Character> characters{
+		get{
+			return new List<Character>(this.battleCharacters.Select(b => b.character));
+		}
+	}
 
 	public void AddCharacter(Character character, Transform parent){
 		BattleCharacter c = new BattleCharacter(character);
-		this.characters.Add(c);
+		this.battleCharacters.Add(c);
 		c.gameObject.transform.SetParent(parent);
 		afterAddingCharacter(c);
 	}
@@ -19,15 +24,15 @@ public class Squad : MonoBehaviour {
 	}
 
 	public List<BattleCharacter> aliveCharacters(){
-		return characters.Where(x => x.character.alive).ToList();
+		return battleCharacters.Where(x => x.character.alive).ToList();
 	}
 
 	public bool allDead(){
-		return characters.All(x => !x.character.alive);
+		return battleCharacters.All(x => !x.character.alive);
 	}
 
 	public void WaitForAction(){
-		foreach(BattleCharacter c in characters){
+		foreach(BattleCharacter c in battleCharacters){
 			c.waitingForAction = true;
 		}
 		onWaitForAction();

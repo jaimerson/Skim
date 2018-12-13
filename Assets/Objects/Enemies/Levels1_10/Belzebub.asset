@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2152ef5ee77b4f079bfeab1f578798d, type: 3}
+  m_Name: Belzebub
+  m_EditorClassIdentifier: 
+  name: Belzebub
+  level: 5
+  strength: 120
+  magic: 0
+  fire_resistance: 110
+  water_resistance: 10
+  bolt_resistance: 80
+  defense: 100
+  currentHP: 100
+  currentMP: 100
+  maxHP: 100
+  maxMP: 100
+  alive: 1
+  prefab: {fileID: 1800763156224532, guid: f1f07cb3880d96b418d17d448f1f3a03, type: 2}
+  experienceDrop: 300
+  goldDrop: 2000

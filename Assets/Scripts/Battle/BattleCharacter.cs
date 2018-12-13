@@ -29,16 +29,29 @@ public class BattleCharacter : System.Object {
 		this.animator = gameObject.GetComponent<Animator>();
 	}
 
-	public static void Attack(BattleCharacter attacker, BattleCharacter defender, Battle battle){
+	public static void Attack(BattleCharacter attacker, BattleCharacter defender){
 		attacker.Attack(defender, new Attack { power = attacker.character.strength });
 	}
 
-	public static void Spell(BattleCharacter spellcaster, BattleCharacter target, Battle battle){
-		battle.LogAction("Don't know any spells :(");
+	public static void Spell(BattleCharacter spellcaster, BattleCharacter target){
 	}
 
-	public static void Item(BattleCharacter itemUser, BattleCharacter target, Battle battle){
-		battle.LogAction("Don't have any items :(");
+	public static void Item(BattleCharacter itemUser, BattleCharacter target){
+	}
+
+	public void subtractMP(int value){
+		this.character.currentMP -= value;
+	}
+
+	public void heal(int value){
+		if(character.dead){
+			return;
+		}
+		character.currentHP += value;
+		if(character.currentHP > character.maxHP){
+			character.currentHP = character.maxHP;
+		}
+		DisplayHeal(value);
 	}
 
 
@@ -51,7 +64,16 @@ public class BattleCharacter : System.Object {
 	public int Defend(Attack attack){
 		int damage = character.Defend(attack);
 		DisplayDamage(damage);
+		if(character.dead){
+			animator.SetTrigger("die");
+		}
 		return damage;
+	}
+
+	public void DisplayHeal(int amount){
+		damageText.GetComponent<Text>().text = string.Format("+{0}", amount);
+		damageText.GetComponent<Animator>().SetTrigger("show");
+		damageText.GetComponent<Animator>().SetTrigger("fade");
 	}
 
 	public void DisplayDamage(int damage){

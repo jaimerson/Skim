@@ -28,7 +28,7 @@ public class Battle : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Game.SetState(Game.State.IN_BATTLE);
+		GameState.Set(GameState.State.IN_BATTLE);
 		this.actionsLog = this.actionsLogGameObject.GetComponent<ActionsLog>();
 		this.heroes = this.actionsPanel.GetComponent<PlayerSquad>();
 		this.enemies = this.actionsPanel.GetComponent<EnemySquad>();
@@ -105,15 +105,16 @@ public class Battle : MonoBehaviour {
 			image.canvasRenderer.SetAlpha(0.0f);
 			image.CrossFadeAlpha(1.0f, 3.0f, true);
 			StartCoroutine(AsyncHelper.WaitFor(() => image.canvasRenderer.GetAlpha() >= 1.0f, () => {
-				StartCoroutine(AsyncHelper.WaitForSeconds(5, () => SceneHelper.GoToScene("MainCave")));
+				StartCoroutine(AsyncHelper.WaitForSeconds(5, () => SceneHelper.GoToScene("MainMenu")));
 			}));
 		});
 	}
 
 	private void endBattle(){
-		Game.SetPreviousState();
-		BattleQueue.Reset();
+		GameState.SetPreviousState();
+		Game.current.characters = heroes.characters;
         SceneHelper.UnloadScene("Battle");
+		BattleQueue.Reset();
 	}
 
 	public void LogAction(string message, System.Action callback){

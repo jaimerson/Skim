@@ -1,4 +1,7 @@
-<b>Warning</b>
+<b><color=red><size=20>Warning</size></color></b>
 
 The facility has been taken by several monsters.
-<b>Red Imps</b> are exremely weak to <b>water damage</b>.
+
+Seek the power hidden in treasure chests to defeat them.
+
+<i>Andromeda Corporation</i>

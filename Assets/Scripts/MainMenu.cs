@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour {
 	public Button newGameButton;
 	public Button exitButton;
 	public List<Character> characters;
+	public List<Spell> spells;
 
 	void Start () {
 		newGameButton.onClick.AddListener(startNewGame);
@@ -19,6 +20,7 @@ public class MainMenu : MonoBehaviour {
 	
 	void startNewGame() {
 		Game.current = new Game(characters);
+		Game.current.spells = spells;
 		SceneHelper.GoToScene("MainCave");
 	}
 }

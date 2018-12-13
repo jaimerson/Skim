@@ -13,6 +13,9 @@ public class TapToMove : MonoBehaviour
 
     void Update()
     {
+        if(GameState.currentState != GameState.State.INDOORS && GameState.currentState != GameState.State.WORLD){
+            return;
+        }
 		if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0){
 			flag = false;
 		}

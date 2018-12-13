@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName="Spell", menuName="Spell")]
 [System.Serializable]
-public class Spell : ScriptableObject {
+public class Spell : ScriptableObject, IConsumable {
 	public enum Type {
 		HEALTH,
 		FIRE,
@@ -17,7 +17,15 @@ public class Spell : ScriptableObject {
 	public string description;
 	public Type type;
 
-	public BattleAction Cast(BattleCharacter performer, BattleCharacter target){
+	public string getName(){
+		return this.name;
+	}
+
+	public string getType(){
+		return this.type.ToString().ToLower();
+	}
+
+	public BattleAction Use(BattleCharacter performer, BattleCharacter target){
 		if(this.type == Type.HEALTH){
             return new BattleAction { performer = performer, target = target, action = heal, message = string.Format("{0} heals {1}", performer.character.name, target.character.name) };
 		}else{
@@ -39,7 +47,7 @@ public class Spell : ScriptableObject {
 	}
 
 	private int spellPower(BattleCharacter performer){
-		return value * performer.character.magic;
+		return value * performer.character.magic / 10;
 	}
 
 	private string attackTypeFromSpellType(Type type){

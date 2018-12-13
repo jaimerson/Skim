@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class CharacterActionPanel : MonoBehaviour {
 	public GameObject actions;
@@ -25,7 +26,7 @@ public class CharacterActionPanel : MonoBehaviour {
 		this.attackButton.onClick.AddListener(attack);
 		this.spellButton.onClick.AddListener(spell);
 		this.itemButton.onClick.AddListener(item);
-		this.spellButton.interactable = Game.current.spells.Count > 0;
+		this.spellButton.interactable = Game.current.spells != null && Game.current.spells.Count > 0;
 		this.itemButton.interactable = false;
 	}
 	
@@ -37,14 +38,32 @@ public class CharacterActionPanel : MonoBehaviour {
 	}
 
 	private void spell(){
-		EnqueueAction(
-			new BattleAction {
-				performer = this.character,
-				message = string.Format("{0} casts spell", this.character.character.name),
-				action=BattleCharacter.Spell,
-				target=null
+		this.waitingForSelection = true;
+		Selector selector = Selector.Create(Game.current.spells.Cast<IConsumable>().ToList());
+		StartCoroutine(AsyncHelper.WaitFor(() => selector.selectionEnded, () =>{
+			Spell s = selector.selected as Spell;
+			Destroy(selector.gameObject);
+
+			List<BattleCharacter> options;
+
+			if(selector.selected.getType() == "health"){
+				options = BattleQueue.alivePlayers();
+			}else{
+				options = BattleQueue.aliveEnemies();
 			}
-		);
+
+            CharacterSelector.SelectOne(options);
+			StartCoroutine(AsyncHelper.WaitFor(() => CharacterSelector.selectionConfirmed, () => {
+				castSpell(s, CharacterSelector.selected);
+                CharacterSelector.Reset();
+				this.waitingForSelection = false;
+			}));
+		}));
+	}
+
+	private void castSpell(IConsumable _spell, BattleCharacter target){
+		Spell spell = (Spell) _spell;
+		EnqueueAction(spell.Use(this.character, target));
 	}
 
 	private void item(){

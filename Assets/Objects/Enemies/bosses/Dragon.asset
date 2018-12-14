@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2152ef5ee77b4f079bfeab1f578798d, type: 3}
+  m_Name: Dragon
+  m_EditorClassIdentifier: 
+  name: Dragon
+  level: 10
+  strength: 100
+  magic: 0
+  fire_resistance: 50
+  water_resistance: 50
+  bolt_resistance: 0
+  defense: 100
+  currentHP: 1000
+  currentMP: 1000
+  maxHP: 1000
+  maxMP: 1000
+  alive: 1
+  prefab: {fileID: 1110820451277698, guid: c3c5621e5115f4aed8652b39fe7c7e9e, type: 2}
+  experienceDrop: 10000
+  goldDrop: 1000

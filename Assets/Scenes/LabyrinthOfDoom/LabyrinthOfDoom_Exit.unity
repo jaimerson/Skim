@@ -150,7 +150,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4289971330366748, guid: f4e3bf9d583e7c94683cbcfdad7c2ec7, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4e3bf9d583e7c94683cbcfdad7c2ec7, type: 2}
@@ -215,7 +215,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &595224364
 Prefab:
@@ -347,7 +347,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4839693493752298, guid: 8e27153d7e3994f2aab5d2dcc173d16d, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e27153d7e3994f2aab5d2dcc173d16d, type: 2}
@@ -1359,62 +1359,52 @@ Prefab:
     - target: {fileID: 114466536373545918, guid: 2a812b19c94ac4611b092e5a5fdf65c6,
         type: 2}
       propertyPath: sceneName
-      value: LabyrinthOfDoom_Entrance
+      value: MainMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a812b19c94ac4611b092e5a5fdf65c6, type: 2}
   m_IsPrefabAsset: 0
---- !u!1001 &1634113156
+--- !u!1001 &1855724706
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4478063803987406, guid: c0f7435809847460f837e63b8cec4b11, type: 2}
+    - target: {fileID: 4589465317711754, guid: 3e92098edbcae4bbcb4c27c7e02935f6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.0098107
+      value: 2.472313
       objectReference: {fileID: 0}
-    - target: {fileID: 4478063803987406, guid: c0f7435809847460f837e63b8cec4b11, type: 2}
+    - target: {fileID: 4589465317711754, guid: 3e92098edbcae4bbcb4c27c7e02935f6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.0987133
+      value: 2.1807659
       objectReference: {fileID: 0}
-    - target: {fileID: 4478063803987406, guid: c0f7435809847460f837e63b8cec4b11, type: 2}
+    - target: {fileID: 4589465317711754, guid: 3e92098edbcae4bbcb4c27c7e02935f6, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4478063803987406, guid: c0f7435809847460f837e63b8cec4b11, type: 2}
+    - target: {fileID: 4589465317711754, guid: 3e92098edbcae4bbcb4c27c7e02935f6, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4478063803987406, guid: c0f7435809847460f837e63b8cec4b11, type: 2}
+    - target: {fileID: 4589465317711754, guid: 3e92098edbcae4bbcb4c27c7e02935f6, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4478063803987406, guid: c0f7435809847460f837e63b8cec4b11, type: 2}
+    - target: {fileID: 4589465317711754, guid: 3e92098edbcae4bbcb4c27c7e02935f6, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4478063803987406, guid: c0f7435809847460f837e63b8cec4b11, type: 2}
+    - target: {fileID: 4589465317711754, guid: 3e92098edbcae4bbcb4c27c7e02935f6, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4478063803987406, guid: c0f7435809847460f837e63b8cec4b11, type: 2}
+    - target: {fileID: 4589465317711754, guid: 3e92098edbcae4bbcb4c27c7e02935f6, type: 2}
       propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 212951699597820030, guid: c0f7435809847460f837e63b8cec4b11,
-        type: 2}
-      propertyPath: m_SortingLayerID
-      value: 1975608285
-      objectReference: {fileID: 0}
-    - target: {fileID: 212951699597820030, guid: c0f7435809847460f837e63b8cec4b11,
-        type: 2}
-      propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c0f7435809847460f837e63b8cec4b11, type: 2}
+  m_SourcePrefab: {fileID: 100100000, guid: 3e92098edbcae4bbcb4c27c7e02935f6, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &2063922409
 GameObject:

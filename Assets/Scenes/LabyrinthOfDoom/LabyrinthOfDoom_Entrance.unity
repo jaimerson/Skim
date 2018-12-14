@@ -1983,16 +1983,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 212233743380254838, guid: bf191a341d5494a4b8035a2623ea1fdd,
-        type: 2}
-      propertyPath: m_SortingLayerID
-      value: 578771195
-      objectReference: {fileID: 0}
-    - target: {fileID: 212233743380254838, guid: bf191a341d5494a4b8035a2623ea1fdd,
-        type: 2}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 114762872800062182, guid: bf191a341d5494a4b8035a2623ea1fdd,
         type: 2}
       propertyPath: textAsset

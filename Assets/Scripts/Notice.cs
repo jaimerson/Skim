@@ -3,7 +3,7 @@
 public class Notice : Interactable {
 
 	public TextAsset textAsset;
-	private GameObject dialog;
+	protected GameObject dialog;
 
 	public override void Setup(){
 		promptText = "Read";

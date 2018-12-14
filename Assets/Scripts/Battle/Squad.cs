@@ -32,7 +32,7 @@ public class Squad : MonoBehaviour {
 	}
 
 	public void WaitForAction(){
-		foreach(BattleCharacter c in battleCharacters){
+		foreach(BattleCharacter c in aliveCharacters()){
 			c.waitingForAction = true;
 		}
 		onWaitForAction();
